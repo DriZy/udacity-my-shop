@@ -10,7 +10,7 @@ import {ProductService} from "../../services/product.service";
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit{
-  title: string = 'Products';
+  title: string = 'Product List';
   products: Product[] = [];
   private ngUnsubscribe = new Subject<void>();
   constructor(private productService: ProductService) {

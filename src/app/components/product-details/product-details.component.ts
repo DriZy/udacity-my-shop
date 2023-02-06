@@ -13,7 +13,6 @@ import {ProductService} from "../../services/product.service";
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  faHeart = faHeart;
   faStar = faStar;
 
   private ngUnsubscribe = new Subject<void>();
