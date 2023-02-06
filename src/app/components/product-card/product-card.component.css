@@ -1,0 +1,23 @@
+.card.product-card {
+  margin: 2rem 0.75rem;
+}
+.card-img-top{
+  object-fit: cover;
+  object-position: center;
+  height: 22rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+form select.product-item-detail.form-select {
+  width: 100%;
+  padding: 6px;
+  border-radius: 5px;
+  margin: auto;
+  display: block;
+  margin-bottom: 5px;
+}
+input.product-add-to-cart {
+  width: 100%;
+  display: block;
+}
+

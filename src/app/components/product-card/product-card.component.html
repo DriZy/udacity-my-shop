@@ -1,0 +1,24 @@
+<div class="card product-card">
+  <a routerLink="products/{{ product.id }}" routerLinkActive="active">
+    <img class="card-img-top" src="{{product.url}}" alt="{{product.name}}">
+  </a>
+  <div class="card-body">
+    <h4 class="card-title">{{product.name}}</h4>
+    <div class="container">
+      <div class="row flex justify-content-end">
+        <!--        <p class="card-text">{{product.category}}</p>-->
+        <p class="card-text">{{ product.price | currency: "USD" }}</p>
+      </div>
+    </div>
+    <p>{{product.description}}</p>
+    <form (ngSubmit)="addProductToCart(product)">
+      <select [(ngModel)]="selectedItem" class="product-item-detail form-select"
+              (ngModelChange)="selectedChange($event)" [ngModelOptions]="{ standalone: true }">
+        <option *ngFor="let value of productCount" value="{{ value }}">
+          {{ value }}
+        </option>
+      </select>
+      <input type="submit" value="Add to Cart" class="mt-4 btn btn-primary product-add-to-cart"/>
+    </form>
+  </div>
+</div>

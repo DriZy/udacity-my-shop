@@ -1,0 +1,42 @@
+<div *ngIf="cartProducts.length; else emptyCart" class="row cart-page">
+  <h3 class="col-12 text-center mb-3">You have {{cartProducts.length}} in your cart</h3>
+  <div class="col-md-6 col-sm-12">
+    <div class="cart__item">
+      <div *ngFor="let cartProduct of cartProducts" class="cart-item">
+        <img class="" src="{{ cartProduct.url }}"/>
+        <div class="cart-panel">
+          <div class="cart-detail">{{ cartProduct.name }}</div>
+          <div class="cart-detail">{{ cartProduct.price | currency: "USD" }}</div>
+          <div class="cart-detail">
+            <select #cart (change)="selectChange(cart.value, cartProduct)" style="width: 100px" class="form-select"
+                    aria-label="Default select example">
+              <option
+                *ngFor="let option of productCount"
+                [ngValue]="option"
+                [selected]="cartProduct.amount === option"
+              >
+                {{ option }}
+              </option>
+            </select>
+          </div>
+          <div class="cart-detail">
+            <button (click)="deletedItem(cartProduct.id)" class="btn btn-primary">
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="cart-item flex justify-content-end">
+        <h3><strong>Total Price: {{ totalPrice | currency: "USD" }} </strong></h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-12">
+    <app-checkout-info (userInfo)="onSubmit($event)"></app-checkout-info>
+  </div>
+</div>
+<ng-template #emptyCart>
+  <div class="warning-message">
+    Cart is empty! Please, <a routerLink="/"> add product</a>.
+  </div>
+</ng-template>
